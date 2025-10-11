@@ -24,7 +24,7 @@ const projects = [
     title: 'Weather-App',
     description: 'A weather application built with React and Tailwind CSS, featuring real-time weather updates and a sleek user interface.',
     image: project3Image,
-    liveLink: '#', // Link to itself or another version
+    liveLink: 'https://weather-app-with-dynamic.vercel.app', 
     githubLink: 'https://github.com/vibha32145/Weather-App-with-dynamic',
   },
   // Add more projects
