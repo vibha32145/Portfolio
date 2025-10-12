@@ -1,7 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if(loading) return;
+  setLoading(true);
+  
+  const formData = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    message: e.target.message.value,
+  };
+
+  try {
+    const res = await fetch('http://localhost:5000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+    toast.success(data.message || 'Message sent successfully!');
+    e.target.reset();
+  } catch (err) {
+    console.error(err);
+    toast.error(err.message || 'Failed to send message');
+  }
+  finally{
+    setLoading(false);
+  }
+};
+
   return (
     <section id="contact" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6 text-center">
@@ -27,7 +60,7 @@ const Contact = () => {
 
         {/* Optional: A simple contact form */}
         <div className="max-w-xl mx-auto p-8 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-left text-lg font-medium text-gray-700 dark:text-gray-200 mb-2">Name</label>
               <input type="text" id="name" name="name" className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="Your Name" />
@@ -42,9 +75,10 @@ const Contact = () => {
             </div>
             <button
               type="submit"
+              disabled={loading}
               className="w-full px-8 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition duration-300"
             >
-              Send Message
+             {loading ? 'Sending...' : 'Send Message'}
             </button>
           </form>
           <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
