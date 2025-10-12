@@ -17,7 +17,8 @@ const handleSubmit = async (e) => {
   };
 
   try {
-    const res = await fetch(`${process.env.VITE_BACKEND_URL}/api/contact`, {
+    const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+    const res = await fetch(`${API_BASE_URL}/api/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
