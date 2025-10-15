@@ -16,7 +16,7 @@ const About = () => {
             When I'm not coding, you can find me [reading some motivational books, e.g., Atomic Habits, Rich Dad Poor Dad, Psychology of Money]. I believe in continuous learning and bringing creativity to every project I undertake.
           </p>
           <a
-            href="https://www.linkedin.com/in/vibha-gupta-257952296/overlay/1760329655319/single-media-viewer/?profileId=ACoAAEev7-MBNW-uIGKjO9x2Yf7BtK9sCLsScCg" // Update with your resume path
+            href="https://www.linkedin.com/in/vibha-gupta-257952296/overlay/1760329655319/single-media-viewer/?profileId=ACoAAEev7-MBNW-uIGKjO9x2Yf7BtK9sCLsScCg"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-8 px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition duration-300"
